@@ -1,5 +1,10 @@
 <?php
 get_header();
+$home_page = get_fields();
+$post_id = get_the_ID();
+$the_items_of_the_best_sellers_section = get_field('the_items_of_the_best_sellers_section', $post_id);
+$the_items_of_the_third_sections = get_field('the_items_of_the_third_sections', $post_id);
+$investments = get_field('investments', $post_id);
 ?>
 
     <div class="main">
@@ -9,16 +14,22 @@ get_header();
             <span class="label">Gofman creative</span>
             <div class="content">
                 <div class="title">
-                    <h1>רונסון נדל”ן</h1>
-                    <p>כבר 20 שנה בונים את פולין</p>
+                    <?php if($home_page['title'] != null){ ?>
+                    <h1><?php echo $home_page['title'];?></h1>
+                    <?php }?>
+                    <?php if($home_page['title-2'] != null){ ?>
+                    <p><?php echo $home_page['title-2'];?></p>
+                    <?php }?>
                 </div>
+                <?php if($home_page['title-3'] != null){ ?>
                 <div class="red-label">
-                    <p>השיגו תשואות גבוהות בהשקעה נמוכה!</p>
+                    <p><?php echo $home_page['title-3'];?></p>
                 </div>
+                <?php }?>
             </div>
 
             <div class="form-hold">
-                <h3>לפגישה וקבלת פרטים אודות דירות להשקעה בטוחה בפולין, השאירו פרטים</h3>
+                <h3><?php if($home_page['the_title_of_the_contact_form'] != null){ echo $home_page['the_title_of_the_contact_form']; }?></h3>
                 <form action="form_processing.php" class="form form-validation" method="post">
                     <div class="form-row-wrap">
                         <input type="hidden" value="7674" name="ProjectID">
@@ -41,103 +52,49 @@ get_header();
         </div>
         <div class="section-best-sellers" style="background-image: url(<?php bloginfo('template_url')?>/img/bg-second-section.png)">
             <div class="main-holder">
-                <h3>הנמכרים ביותר</h3>
+                <?php if($home_page['the_title_of_the_section_best_sellers'] != null){ ?>
+                <h3><?php echo $home_page['the_title_of_the_section_best_sellers'];?></h3>
+                <?php }?>
                 <div class="items">
                     <ul class="items-list">
+                        <?php if (isset($the_items_of_the_best_sellers_section) && !empty($the_items_of_the_best_sellers_section)): ?>
+                        <?php foreach ($the_items_of_the_best_sellers_section as $block): ?>
+                        <li>
+                            <div class="hover-text" style="background-image: url(<?php echo $block['image'];?>);">
+                                <div class="hover-inner">
+                                    <h4><a href="#" class="myBtns"><?php echo $block['title'];?></a></h4>
+                                </div>
+                                <a href="#" class="myBtns hover-btn"><?php echo $block['button'];?></a>
+                            </div>
+                            <span class="image-item">
+									<p class="bot-title"><?php echo $block['title-2'];?></p>
+									<p class="bot-description"><?php echo $block['description'];?></p>
+								</span>
+                        </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
-                        <li>
-                            <div class="hover-text" style="background-image: url(<?php bloginfo('template_url')?>/img/item1.png);">
-                                <div class="hover-inner">
-                                    <!--<h4><a href="http://ronson.pl/novakrolikarnia/en/" target="_blank"><strong>Nova Królikarnia</strong> Investment</a></h4>-->
-                                    <h4><a href="#" class="myBtns"><strong>Nova Królikarnia</strong> Investment</a></h4>
-                                </div>
-                                <!--<a href="http://ronson.pl/novakrolikarnia/en/" target="_blank" class="hover-btn">לפרטים</a>-->
-                                <a href="#" class="myBtns hover-btn">לפרטים</a>
-                            </div>
-                            <span class="image-item">
-									<p class="bot-title">Nova Królikarnia</p>
-                                <!--<p class="bot-description">Warszawa, Jaśminowa Street</p>-->
-									<p class="bot-description">פרויקט מדהים מרכז פולין</p>
-								</span>
-                        </li>
-                        <li>
-                            <div class="hover-text" style="background-image: url(<?php bloginfo('template_url')?>/img/item6.png);">
-                                <div class="hover-inner">
-                                    <!--<h4><a href="http://ronson.pl/marina-miasto/en/" target="_blank"><strong>Miasto Marina</strong> Investment</a></h4>-->
-                                    <h4><a href="#" class="myBtns"><strong>Miasto Marina</strong> Investment</a></h4>
-                                </div>
-                                <!--<a href="http://ronson.pl/marina-miasto/en/" target="_blank" class="hover-btn">לפרטים</a>-->
-                                <a href="#" class="myBtns hover-btn">לפרטים</a>
-                            </div>
-                            <span class="image-item">
-									<p class="bot-title">Miasto Marina</p>
-                                <!--<p class="bot-description">Wrocław, ul. Na Grobli</p>-->
-									<p class="bot-description">דירות מלון בוורצלאב עם הנוף היפה בפולין </p>
-								</span>
-                        </li>
-                        <li>
-                            <div class="hover-text" style="background-image: url(<?php bloginfo('template_url')?>/img/item3.png);">
-                                <div class="hover-inner">
-                                    <!--<h4><a href="http://ronson.pl/city-link/en" target="_blank"><strong>City Link</strong> Investment</a></h4>-->
-                                    <h4><a href="#" class="myBtns"><strong>City Link</strong> Investment</a></h4>
-                                </div>
-                                <!--<a href="http://ronson.pl/city-link/en" target="_blank" class="hover-btn">לפרטים</a>-->
-                                <a href="#" class="myBtns hover-btn">לפרטים</a>
-                            </div>
-                            <span class="image-item">
-									<p class="bot-title">City Link</p>
-                                <!--<p class="bot-description">Warszawa, 34 Skierniewicka Street</p>-->
-									<p class="bot-description">פרויקט מדהים מרכז פולין</p>
-								</span>
-                        </li>
-                        <li>
-                            <div class="hover-text" style="background-image: url('<?php bloginfo('template_url')?>/img/item7.jpg');">
-                                <div class="hover-inner">
-                                    <!--<h4><a href="http://grunwaldkwadrat.ronsondevelopment.com.pl/" target="_blank"><strong>Grunwald Kwadrat</strong> Investment</a></h4>-->
-                                    <h4><a href="#" class="myBtns"><strong>Grunwald Kwadrat</strong> Investment</a></h4>
-                                </div>
-                                <!--<a href="http://grunwaldkwadrat.ronsondevelopment.com.pl/" target="_blank" class="hover-btn">לפרטים</a>-->
-                                <a href="#" class="myBtns hover-btn">לפרטים</a>
-                            </div>
-                            <span class="image-item">
-									<p class="bot-title">Grunwald Kwadrat</p>
-                                <!--<p class="bot-description">Poznań, ul. Świerzawska 5</p>-->
-									<p class="bot-description">עכשיו בפרי סייל!</p>
-								</span>
-                        </li>
-                        <li>
-                            <div class="hover-text" style="background-image: url('<?php bloginfo('template_url')?>/img/item5.jpg');">
-                                <div class="hover-inner">
-                                    <!--<h4><a href="http://ronson.pl/miasto-moje/en/" target="_blank"><strong>Miasto Moje</strong> Investment</a></h4>-->
-                                    <h4><a href="#" class="myBtns"><strong>Miasto Moje</strong> Investment</a></h4>
-                                </div>
-                                <!--<a href="http://ronson.pl/miasto-moje/en/" target="_blank" class="hover-btn">לפרטים</a>-->
-                                <a href="#" class="myBtns hover-btn">לפרטים</a>
-                            </div>
-                            <span class="image-item">
-									<h4 class="bot-title">Miasto Moje</h4>
-                                <!--<p class="bot-description">Warszawa, 58 Marywilska Street</p>-->
-									<p class="bot-description">פרויקט מדהים מרכז פולין</p>
-								</span>
-                        </li>
                     </ul>
                 </div>
                 <div class="video" id="video-section">
                     <!--<video src="img/Ronson_FINAL.mp4"></video>-->
-                    <video class="video-controll mobile-hidden-video" id="videoPlayer" poster="<?php bloginfo('template_url')?>/img/video-play.png" onclick="this.paused ? this.play() : this.pause();">
+                    <video class="video-controll mobile-hidden-video" id="videoPlayer" <?php if($home_page['poster_for_video_section'] != null){ ?>poster="<?php echo $home_page['poster_for_video_section'];?>"<?php }?> onclick="this.paused ? this.play() : this.pause();">
                         <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
                         <source  src="<?php bloginfo('template_url')?>/video/Ronson_FINAL.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                         <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
                         <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
                         <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
                     </video>
-                    <video class="video-controll desctop-hidden-video" id="videoPlayer" poster="<?php bloginfo('template_url')?>/img/video-play.png" onclick="this.paused ? this.play() : this.pause();">
+                    <?php if($home_page['video_mobile'] != null){ ?>
+                    <video class="video-controll desctop-hidden-video" id="videoPlayer" <?php if($home_page['poster_for_video_section'] != null){ ?>poster="<?php echo $home_page['poster_for_video_section'];?>"<?php }?> onclick="this.paused ? this.play() : this.pause();">
                         <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
-                        <source src="<?php bloginfo('template_url')?>/video/ronson.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        <source src="<?php echo $home_page['video_mobile'];?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                         <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
                         <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
                         <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
                     </video>
+                    <?php }?>
+
                 </div>
 
 
@@ -145,49 +102,29 @@ get_header();
         </div>
 
         <div class="third-section">
+            <?php if($home_page['the_title_of_the_third_section'] != null){ ?>
             <div class="title-section">
-                <p>פשוט מזה<span> אין!</span></p>
+                <p><?php echo $home_page['the_title_of_the_third_section'];?></p>
             </div>
+            <?php }?>
             <div class="main-holder">
                 <div class="wrapper">
                     <ul>
-                        <li id="item-1">
-                            <img src="<?php bloginfo('template_url')?>/img/icon1.png" alt="">
-                            <p class="text">אתם תוכלו להנות מהשקעה יציבה ובטוחה </p>
-                            <a href="/how.html">
+                        <?php if (isset($the_items_of_the_third_sections) && !empty($the_items_of_the_third_sections)): ?>
+                        <?php $counter = 1; ?>
+                        <?php foreach ($the_items_of_the_third_sections as $block): ?>
+                        <li id="item-<?php echo $counter; ?>">
+                            <img src="<?php echo $block['image'];?>" alt="">
+                            <p class="text"><?php echo $block['description'];?></p>
+                            <a href="<?php echo $block['the_link_of_the_button'];?>">
                                 <div class="wrap-span">
-                                    <span class="button">לפרטים</span>
+                                    <span class="button"><?php echo $block['the_text_of_the_button'];?></span>
                                 </div>
                             </a>
                         </li>
-                        <li id="item-2">
-                            <img src="<?php bloginfo('template_url')?>/img/icon2.png" alt="">
-                            <p class="text">נקשר אתכם לחברת הניהול </p>
-                            <a href="/how.html">
-                                <div class="wrap-span">
-                                    <span class="button">לפרטים</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="item-3">
-                            <img src="<?php bloginfo('template_url')?>/img/icon3.png" alt="">
-                            <p class="text">נחבר אתכם לחברת הפינישים להמשך עיצוב הדירה </p>
-                            <a href="/how.html">
-                                <div class="wrap-span">
-                                    <span class="button">לפרטים</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="item-4">
-                            <img src="<?php bloginfo('template_url')?>/img/icon4.png" alt="">
-                            <p class="text">נעזור לכם בבחירת הדירה</p>
-                            <a href="/how.html">
-                                <div class="wrap-span">
-                                    <span class="button">לפרטים</span>
-                                </div>
-                            </a>
-                        </li>
-
+                            <?php $counter++;?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
 
                 </div>
@@ -198,27 +135,20 @@ get_header();
             <!--<div class="main-holder">-->
             <!--</div>-->
             <div class="fourth-section">
-                <h3><span>רונסון נדל”ן</span> - השקעה יציבה ובטוחה</h3>
-                <article class="rd-projects">
-                    <strong>11</strong>
-                    שנות מסחר<br> בבורסה הפולנית
-                </article>
-                <article class="rd-exp-years">
-                    <strong>20,000</strong>
-                    לקוחות מרוצים
-                </article>
-                <article class="rd-completed">
-                    <strong>20</strong>
-                    שנות <br>ניסיון
-                </article>
-                <article class="rd-residents">
-                    <strong>25</strong>
-                    פרויקטים שהסתיימו/בנויים
-                </article>
-                <article class="rd-gpw-years">
-                    <strong>12</strong>
-                    פרויקטים<br> למכירה
-                </article>
+                <?php if($home_page['the_title_of_the_fourth_section'] != null){ ?>
+                <h3><?php echo $home_page['the_title_of_the_fourth_section'];?></h3>
+                <?php }?>
+
+                <?php if (isset($investments) && !empty($investments)): ?>
+                    <?php $counter = 1; ?>
+                        <?php foreach ($investments as $block): ?>
+                        <article class="<?php echo fourth_section_counter($counter); ?>">
+                            <strong><?php echo $block['amount'];?></strong>
+                            <?php echo $block['description'];?>
+                        </article>
+                        <?php $counter++;?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
 <?php
