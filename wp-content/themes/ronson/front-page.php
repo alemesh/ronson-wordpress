@@ -8,10 +8,12 @@ $investments = get_field('investments', $post_id);
 ?>
 
     <div class="main">
-        <div class="home-header" style="background-image: url(<?php bloginfo('template_url')?>/img/background-header2.png)">
+        <div class="home-header" style="background-image: url(<?php if($home_page['background_first_section'] != null){ echo $home_page['background_first_section']; }?>)">
             <div class="rectangle-left"></div>
             <div class="rectangle-right"></div>
-            <span class="label">Gofman creative</span>
+            <?php if($home_page['label'] != null){ ?>
+            <span class="label"><?php echo $home_page['label'];?></span>
+            <?php }?>
             <div class="content">
                 <div class="title">
                     <?php if($home_page['title'] != null){ ?>
@@ -50,7 +52,7 @@ $investments = get_field('investments', $post_id);
                 </form>
             </div>
         </div>
-        <div class="section-best-sellers" style="background-image: url(<?php bloginfo('template_url')?>/img/bg-second-section.png)">
+        <div class="section-best-sellers" style="background-image: url(<?php if($home_page['background_of_the_section_best_sellers'] != null){ echo $home_page['background_of_the_section_best_sellers']; }?>)">
             <div class="main-holder">
                 <?php if($home_page['the_title_of_the_section_best_sellers'] != null){ ?>
                 <h3><?php echo $home_page['the_title_of_the_section_best_sellers'];?></h3>
