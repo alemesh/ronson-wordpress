@@ -1,58 +1,182 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package ronson
- */
+<!DOCTYPE html>
+<html lang="ru">
 
-?>
-<!doctype html>
-<html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
+    <meta charset="utf-8">
+
+    <title>Ronson</title>
+    <meta name="description" content="">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="<?php bloginfo('template_url')?>/img/favicon/favicon2.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?php bloginfo('template_url')?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_url')?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?php bloginfo('template_url')?>/img/favicon/apple-touch-icon-114x114.png">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
+    <!--    <link rel="stylesheet" href="css/main.min.css">-->
+
+
+
+
+    <!-- Facebook Pixel Code -->
+
+    <script>
+
+        !function(f,b,e,v,n,t,s)
+
+
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+
+            n.queue=[];t=b.createElement(e);t.async=!0;
+
+
+            t.src=v;s=b.getElementsByTagName(e)[0];
+
+
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+
+
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+
+        fbq('init', '782731271921380');
+
+
+        fbq('track', 'PageView');
+        <?php if( is_page_template('thanks-page.php') ){?>
+        fbq('track', 'Lead');
+        <?php }?>
+
+    </script>
+
+    <noscript>
+
+        <img height="1" width="1"
+
+             src="https://www.facebook.com/tr?id=782731271921380&ev=PageView
+
+&noscript=1"/>
+
+    </noscript>
+
+    <!-- End Facebook Pixel Code -->
+    <!-- Global site tag (gtag.js) - Google AdWords: 808590525 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-808590525"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-808590525');
+    </script>
+    <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ronson' ); ?></a>
+<body>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$ronson_description = get_bloginfo( 'description', 'display' );
-			if ( $ronson_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $ronson_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+<div class="wraper">
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'ronson' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!--<h3> השאירו פרטים</h3>-->
+            <!--<p>לפגישה וקבלת פרטים אודות דירות להשקעה בטוחה בפולין,</p>-->
+            <h3>צרו קשר</h3>
+            <p>רוצים שנחזור אליכם? השאירו פרטים ונדבר בהקדם</p>
+            <form action="floating_form_sender.php" class="form form-validation" method="post">
+                <div class="form-row-wrap">
+                    <input type="hidden" value="7674" name="ProjectID">
+                    <input type="hidden" value="zxc1204" name="Password">
+                    <div class="form-row">
+                        <input name="name" class="form-control" required data-required="true" type="text" pattern="^[A-Zא-תa-z ]{1,50}$"  placeholder="*שם">
+                    </div>
+                    <div class="form-row">
+                        <input name="tel" class="form-control" required data-required="true" type="text" placeholder="*נייד" pattern="(((02)|(03)|(04)|(08)|(09)){1}[\d]{7,8})|(((071)|(072)|(073)|(074)|(076)|(077)|(078)|(079)|(050)|(051)|(052)|(053)|(054)|(055)|(056)|(058)|(059)){1}[\d]{6,7})" title="International, state or local telephone number">
+                    </div>
+                    <div class="form-row">
+                        <input name="email" class="form-control" type="email" placeholder="דוא”ל">
+                    </div>
+                    <div class="form-row">
+                        <textarea name="description" class="form-control textarea" placeholder="תוכן הפנייה"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <input type="submit" class="btn" value="שלח">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-conteiner">
+            <div class="logo">
+                <a href="/">
+                    <img src="<?php bloginfo('template_url')?>/img/logo2.png" alt="logo">
+                </a>
+            </div>
+            <div class="info-section">
+                <ul class="info-left">
+                    <li><a href="tel:03-6988888"><span class="head-hidden">או דברו איתנו: </span><span class="phon-number">03-6988888</span></a></li>
+                    <li class="head-hidden"><a href="#" id="myBtn">יש לכם שאלות? <span>לחצו</span></a></li>
+                    <li class="head-hidden hover-red"><a href="mailto:office@ronson.co.il"><span class="post-card"></span></a></li>
+                </ul>
+                <ul class="info-right">
+                    <!--<li><a href="#">המועדפים עלי (0)</a></li>-->
+                    <li><a href="https://www.facebook.com/RonsonIsrael/" target="_blank"><span class="facebook"></span></a></li>
+                    <?php if( is_front_page() ) {?>
+                    <li class="button-mobile"><a href="#video-section"><span class="youtube"></span></a></li>
+                    <?php }else{?>
+                    <li><a href="/#video-section"><span class="youtube"></span></a></li>
+                    <?php }?>
+                </ul>
+            </div>
+            <div class="nav-section" id="form-scrol">
+                <a href="/">
+                    <div class="floating-logo"></div>
+                </a>
+
+                <?php
+                wp_nav_menu(array(
+                    'container' => 'false',
+                    //The location that we want to bring
+                    'theme_location'=>'menu-1',
+                    //Location displays the HTML markup menu
+                    'items_wrap'=>'<ul id="%1$s" class="%2$s">%3$s</ul>',
+                    //Specify the class for the menu
+                    'menu_class'=>'main-mnu',//changing styles called class="nav-in" to class='sub-menu'
+                    'menu_id'=>''
+//				'depth'=>'0'
+                    //                        'walker'=> new Menu_Walker_header
+                ));
+                ?>
+
+
+
+                <div class="togle-wrap">
+                    <a href="#" class="toggle-mnu hidden-md hidden-lg"><span></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>

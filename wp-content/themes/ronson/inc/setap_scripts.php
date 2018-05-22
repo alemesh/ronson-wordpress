@@ -13,7 +13,7 @@ if ( ! function_exists( 'ronson_setup' ) ) :
 
         register_nav_menus( array(
             'menu-1' => esc_html__( 'Primary', 'anc-3f' ),
-            'menu-2' => esc_html__( 'Sidebar', 'anc-3f' ),
+            'menu-2' => esc_html__( 'Futer', 'anc-3f' ),
         ) );
 
         add_theme_support( 'html5', array(
