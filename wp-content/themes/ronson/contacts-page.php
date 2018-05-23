@@ -1,28 +1,22 @@
 <?php
 /**Template name: contacts_page */
 get_header();
+$contact_page = get_fields();
+$post_id = get_the_ID();
 ?>
 
     <div class="main">
-
-
-        <div class="contacts-page">
+        <div class="contacts-page" style="background-image: url(<?php if($contact_page['bacgroung'] != null){ echo $contact_page['bacgroung']; }?>)">
             <div class="corner-bg"></div>
             <div class="main-holder">
 
                 <div class="wrap-contacts">
                     <div class="left-section">
+                        <?php if($contact_page['left_section'] != null){ ?>
                         <div class="first-block">
-                            <h4>משרד ראשי</h4>
-                            <p>מגדל אלון 2, יגאל אלון 94, תל אביב, קומה 28 </p>
-                            <p><a href="tel:03-6988888">טל: 03-6988888</a></p>
-                            <p><a href="mailto:Office@ronson.co.il">מייל: Office@ronson.co.il</a></p>
+                                <?php echo $contact_page['left_section'];?>
                         </div>
-                        <!--<div class="second-block">-->
-                        <!--<p>אנו זמינים עבורכם  <span>5 ימים בשבוע</span></p>-->
-                        <!--<p><span>ראשון – חמישי</span></p>-->
-                        <!--<p><span>בין השעות: 09:00-17:00</span></p>-->
-                        <!--</div>-->
+                        <?php }?>
                     </div>
                     <div class="right-section">
                         <div class="wrap-right-section">

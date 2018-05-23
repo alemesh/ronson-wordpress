@@ -1,6 +1,10 @@
 <?php
 /**Template name: how_page */
 get_header();
+$how_page = get_fields();
+$post_id = get_the_ID();
+$items_of_the_header_section = get_field('items_of_the_header_section', $post_id);
+$items_of_the_second_section = get_field('items_of_the_second_section', $post_id);
 ?>
 
     <div class="main">
@@ -9,36 +13,26 @@ get_header();
             <div class="corner-bg"></div>
 
             <div class="third-section">
+                <?php if($how_page['title_of_the_header_section'] != null){ ?>
                 <div class="title-section">
-                    <p>פשוט מזה<span> אין!</span></p>
+                    <p><?php echo $how_page['title_of_the_header_section'];?></p>
                 </div>
+                <?php }?>
                 <div class="main-holder">
                     <div class="wrapper">
                         <ul>
-                            <li id="item-1">
+                            <?php if (isset($items_of_the_header_section) && !empty($items_of_the_header_section)): ?>
+                            <?php $counter = 1; ?>
+                            <?php foreach ($items_of_the_header_section as $block): ?>
+                            <li id="item-<?php echo $counter; ?>">
                                 <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon1.png" alt="">
+                                    <img src="<?php echo $block['image'];?>" alt="">
                                 </div>
-                                <p class="text">אתם תיהנו מהשקעה בטוחה, יציבה ומניבה</p>
+                                <p class="text"><?php echo $block['title'];?></p>
                             </li>
-                            <li id="item-2">
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon2.png" alt="">
-                                </div>
-                                <p class="text">נדאג לכל הפרטים</p>
-                            </li>
-                            <li id="item-3">
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon3.png" alt="">
-                                </div>
-                                <p class="text">נסייע בנראות הסופית ובניהול הדירה</p>
-                            </li>
-                            <li id="item-4">
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon4.png" alt="">
-                                </div>
-                                <p class="text">נעזור לכם בבחירת הדירה</p>
-                            </li>
+                                    <?php $counter++; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
 
                         </ul>
 
@@ -47,7 +41,9 @@ get_header();
             </div>
             <div class="fourth-section2">
                 <div class="main-holder">
-                    <h3 class="title">חבילת שירות כוללת – ONE STOP SHOP</h3>
+                    <?php if($how_page['the_title_of_the_second_section'] != null){ ?>
+                    <h3 class="title"><?php echo $how_page['the_title_of_the_second_section'];?></h3>
+                    <?php }?>
                     <div class="wrap-holder">
                         <div class="wrap-fourch-section-left-block">
                             <div class="wrap-content">
@@ -81,57 +77,19 @@ get_header();
                         </div>
 
                         <div class="wrap-fourch-section">
+                            <?php if (isset($items_of_the_second_section) && !empty($items_of_the_second_section)): ?>
+                            <?php foreach ($items_of_the_second_section as $block): ?>
                             <div class="item-fourt-section">
                                 <div class="img-fourtch-section">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon4.png" alt="">
+                                    <img src="<?php echo $block['image'];?>" alt="">
                                 </div>
                                 <div class="desription-fourtch-section">
-                                    <h4>נעזור לכם בבחירת הדירה </h4>
-                                    <!--<p>הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם</p>-->
-                                    <p>לאחר שהתעניינתם בדירה להשקעה בפולין באחד מהפרויקטים של רונסון, אנחנו נבצע בדיקה מעמיקה
-                                        ונאתר את הנכנס האטרקטיבי ביותר עבורכם.
-                                    </p>
+                                    <h4><?php echo $block['title'];?></h4>
+                                    <?php echo $block['description'];?>
                                 </div>
                             </div>
-                            <div class="item-fourt-section">
-                                <div class="img-fourtch-section">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon3.png" alt="">
-                                </div>
-                                <div class="desription-fourtch-section">
-                                    <!--<h4>נחבר אתכם לחברת הפינישים להמשך עיצוב הדירה</h4>-->
-                                    <h4>נסייע בנראות הסופית ובניהול הדירה</h4>
-                                    <!--<p>הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם</p>-->
-                                    <p>בעזרת חברת הגימור, נשלים את העבודות הרלוונטיות ואת אבזור הנכס (לרוב הדירות מגיעות ריקות),
-                                        על מנת להשביח את ערכו למקסימום. בנוסף, נאתר את חברת הניהול וננהל מולה מו"מ.
-                                        חברות הניהול העובדות אתנו הן מהמובילות בפולין!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-fourt-section">
-                                <div class="img-fourtch-section">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon2.png" alt="">
-                                </div>
-                                <div class="desription-fourtch-section">
-                                    <!--<h4>נקשר אתכם לחברת הניהול</h4>-->
-                                    <h4>נדאג לכל הפרטים</h4>
-                                    <!--<p>הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם</p>-->
-                                    <p>נדאג להשלמת התהליך הפרוצדורלי והמשפטי, לרבות רישום הנכס בטאבו הפולני, בליווי עו"ד ישראלי-פולני ונוטריון פולני. בסוף התהליך, תהיו הבעלים החוקיים של הנכס בפולין.</p>
-                                </div>
-                            </div>
-                            <div class="item-fourt-section">
-                                <div class="img-fourtch-section">
-                                    <img src="<?php bloginfo('template_url')?>/img/icon1.png" alt="">
-                                </div>
-                                <div class="desription-fourtch-section">
-                                    <!--<h4>אתם תוכלו להנות מהשקעה יציבה ובטוחה</h4>-->
-                                    <h4>אתם תיהנו מהשקעה בטוחה, יציבה ומניבה</h4>
-                                    <!--<p>הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם</p>-->
-                                    <p>אתם תיהנו מנכס מניב בפולין, שמסומנת כיום כיעד פיננסי נחשב, עם כלכלה יציבה, מטבע חזק ומגוון הזדמנויות חדשות להשקעה. כל זאת, בתהליך פשוט וממוקד, ללא צורך לטוס לפולין.
-
-                                        אנחנו הכתובת שלכם לכל שלבי התהליך – יש לכם תמיד עם מי לדבר!
-                                    </p>
-                                </div>
-                            </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
 
