@@ -1,13 +1,26 @@
+<?php
+$footer_options = get_fields(184);
+?>
 <div class="fifth-section">
     <div class="main-holder">
         <div class="buttons">
-            <a href="https://api.whatsapp.com/send?phone=97236988888" class="mobile-hidden"><span class="phone-text">וואטס אפ עסקי</span><span class="phon-number">03-6988888</span><span class="mobile-phone"></span></a>
-            <a href="#" id="myBtn2" ><span>כתבו  <span class="column">לנו</span></span><span class="mail"></span></a>
-            <a href="tel:03-6988888"><span class="phone-text">דברו איתנו</span><span class="phon-number">03-6988888</span><span class="phone"></span></a>
+            <?php if($footer_options['whatsapp_number'] != null){ ?>
+            <a href="https://api.whatsapp.com/send?phone=<?php echo $footer_options['whatsapp_number'];?>" class="mobile-hidden"><span class="phone-text"><?php if($footer_options['whatsapp_text_1'] != null){ echo $footer_options['whatsapp_text_1']; }?></span><span class="phon-number"><?php if($footer_options['whatsapp_text_2'] != null){ echo $footer_options['whatsapp_text_2']; }?></span><span class="mobile-phone"></span></a>
+            <?php }?>
+            <?php if($footer_options['floating_form_text_1'] != null){ ?>
+            <a href="#" id="myBtn2" ><span><?php echo $footer_options['floating_form_text_1'];?><span class="column"><?php if($footer_options['floating_form_text_2'] != null){ echo $footer_options['floating_form_text_2']; }?></span></span><span class="mail"></span></a>
+            <?php }?>
+            <?php if($footer_options['phone_number'] != null){ ?>
+            <a href="tel:<?php echo $footer_options['phone_number'];?>"><span class="phone-text"><?php if($footer_options['phone_text'] != null){ echo $footer_options['phone_text']; }?></span><span class="phon-number"><?php echo $footer_options['phone_number'];?></span><span class="phone"></span></a>
+            <?php }?>
         </div>
-        <h3>בקרו אותנו ב:</h3>
+        <?php if($footer_options['title'] != null){ ?>
+        <h3><?php echo $footer_options['title'];?></h3>
+        <?php }?>
         <div class="social-section">
-            <a href="https://www.facebook.com/RonsonIsrael/" target="_blank"><span class="facebook"></span></a>
+            <?php if($footer_options['facebook'] != null){ ?>
+            <a href="<?php echo $footer_options['facebook'];?>" target="_blank"><span class="facebook"></span></a>
+            <?php }?>
             <?php if( is_front_page() ) {?>
             <span class="button-mobile"><a href="#video-section"><span class="youtube"></span></a></span>
             <?php }else{?>
@@ -32,7 +45,9 @@
             ?>
         </div>
         <div class="description">
-            <p>ההדמיות, ההנפשות והמודלים של המבנים המוצגים באתר www.ronson.co.il. דומים לאובייקט הסופי ככל שניתן, כלומר הם עשויים להיות שונים מהמקור, במראה המבנים בפועל, פיתוח הקרקע וסביבת הנכס, גם מבחינת סכמת הצבעים. יחד עם זאת, התכונות והפרטים הבסיסיים ופונקציונליות המבנים לא ישתנו.</p>
+            <?php if($footer_options['description'] != null){ ?>
+                <?php echo $footer_options['description'];?>
+            <?php }?>
         </div>
 
     </div>
@@ -45,17 +60,17 @@
     <div class="main-holder">
         <div class="logo-footer">
             <a href="/">
-                <img src="<?php bloginfo('template_url')?>/img/logo-footer2.png" alt="">
+                <?php if($footer_options['logo'] != null){ ?>
+                <img src="<?php echo $footer_options['logo'];?>" alt="">
+                <?php }?>
             </a>
         </div>
         <div class="footer-description">
             <!--<p><strong>ופונקציונליות המבנים לא ישתנו.</strong>פיתוח הקרקע וסביבת הנכס, גם מבחינת סכמת הצבעים. יחד עם זאת, התכונות והפרטים הבסיסיים </p>-->
 
-            <p>
-                <!--<strong>א.מ.ו.ר - פולין נדלן בע”מ</strong>-->
-                <!--משווקת בלעדית של רונסון בישראל<br>-->
-                טל: 03-6988888 | מייל: office@ronson.co.il<br>
-                מגדל אלון 2, יגאל אלון 94, תל אביב, קומה 28, מיקוד 6789140</p>
+            <?php if($footer_options['copyrate'] != null){ ?>
+                <?php echo $footer_options['copyrate'];?>
+            <?php }?>
         </div>
     </div>
 </div>

@@ -26,7 +26,43 @@
 
     <!--    <link rel="stylesheet" href="css/main.min.css">-->
 
+    <style>
+        /* Pagination */
+        .pagination {
+            clear:both;
+            position:relative;
+            font-size:11px; /* Pagination text size */
+            line-height:13px;
+            float:right; /* Pagination float direction */
+        }
 
+        .pagination span, .pagination a {
+            display:block;
+            float:left;
+            margin: 2px 2px 2px 0;
+            padding:6px 9px 5px 9px;
+            text-decoration:none;
+            width:auto;
+            color:#fff; /* Pagination text color */
+            background: #555; /* Pagination non-active background color */
+            -webkit-transition: background .15s ease-in-out;
+            -moz-transition: background .15s ease-in-out;
+            -ms-transition: background .15s ease-in-out;
+            -o-transition: background .15s ease-in-out;
+            transition: background .15s ease-in-out;
+        }
+
+        .pagination a:hover{
+            color:#fff;
+            background: #6AAC70; /* Pagination background on hover */
+        }
+
+        .pagination .current{
+            padding:6px 9px 5px 9px;
+            background: #6AAC70; /* Current page background */
+            color:#fff;
+        }
+    </style>
 
 
     <!-- Facebook Pixel Code -->
@@ -91,7 +127,10 @@
 </head>
 
 <body>
+<?php
+$header_options = get_fields(171);
 
+?>
 <div class="wraper">
 
 
@@ -132,18 +171,28 @@
         <div class="header-conteiner">
             <div class="logo">
                 <a href="/">
-                    <img src="<?php bloginfo('template_url')?>/img/logo2.png" alt="logo">
+                    <?php if($header_options['logo'] != null){ ?>
+                    <img src="<?php echo $header_options['logo'];?>" alt="logo">
+                    <?php }?>
                 </a>
             </div>
             <div class="info-section">
                 <ul class="info-left">
-                    <li><a href="tel:03-6988888"><span class="head-hidden">או דברו איתנו: </span><span class="phon-number">03-6988888</span></a></li>
-                    <li class="head-hidden"><a href="#" id="myBtn">יש לכם שאלות? <span>לחצו</span></a></li>
-                    <li class="head-hidden hover-red"><a href="mailto:office@ronson.co.il"><span class="post-card"></span></a></li>
+                    <?php if($header_options['phone_number'] != null){ ?>
+                    <li><a href="tel:<?php echo $header_options['phone_number'];?>"><span class="head-hidden"><?php if($header_options['phone_text'] != null){ echo $header_options['phone_text']; }?></span><span class="phon-number"><?php echo $header_options['phone_number'];?></span></a></li>
+                    <?php }?>
+                    <?php if($header_options['contact_text'] != null){ ?>
+                    <li class="head-hidden"><a href="#" id="myBtn"><?php echo $header_options['contact_text'];?></a></li>
+                    <?php }?>
+                    <?php if($header_options['mail'] != null){ ?>
+                    <li class="head-hidden hover-red"><a href="mailto:<?php echo $header_options['mail'];?>"><span class="post-card"></span></a></li>
+                    <?php }?>
                 </ul>
                 <ul class="info-right">
                     <!--<li><a href="#">המועדפים עלי (0)</a></li>-->
-                    <li><a href="https://www.facebook.com/RonsonIsrael/" target="_blank"><span class="facebook"></span></a></li>
+                    <?php if($header_options['facebook_links'] != null){ ?>
+                    <li><a href="<?php echo $header_options['facebook_links'];?>" target="_blank"><span class="facebook"></span></a></li>
+                    <?php }?>
                     <?php if( is_front_page() ) {?>
                     <li class="button-mobile"><a href="#video-section"><span class="youtube"></span></a></li>
                     <?php }else{?>
@@ -153,7 +202,7 @@
             </div>
             <div class="nav-section" id="form-scrol">
                 <a href="/">
-                    <div class="floating-logo"></div>
+                    <div class="floating-logo" style="background-image: url(img/logo2.png)"></div>
                 </a>
 
                 <?php

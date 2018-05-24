@@ -39,50 +39,37 @@ $post_id = get_the_ID();
 
 
 
-<!--                        --><?php
-//                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-//
-//                        $args = array(
-//                            'posts_per_page' => 2,
-//                            'paged' => $paged
-//                        );
-//                        $custom_query = new WP_Query( $args );
-//
-//                        while($custom_query->have_posts()) :
-//                            $custom_query->the_post();
-//                            the_title();
-//                            echo '<br>';
-//                            ?>
-<!---->
-<!--                        --><?php //endwhile; ?>
-<!---->
-<!--                        --><?php
-//
-//                        the_posts_pagination();
-//                        ?>
+                        <?php
+                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
+                        $args = array(
+                            'posts_per_page' => 5,
+                            'paged' => $paged
+                        );
+                        $custom_query = new WP_Query( $args );
 
-
-
-
+                        while($custom_query->have_posts()) :
+                            $custom_query->the_post();
+                            ?>
 
                                     <?php
-                                    $args = array(
-                                'numberposts' => 5,
-                                'category' => 0,
-                                'orderby' => 'date',
-                                'order' => 'DESC',
-                                'include' => array(),
-                                'exclude' => array(),
-                                'meta_key' => '',
-                                'meta_value' => '',
-                                'post_type' => 'post',
-                                'suppress_filters' => true,
-                            );
-                            $posts = get_posts($args);
-                            $counter = 0;
-                            foreach ($posts as $post) {
-                                setup_postdata($post);
+//                                    $args = array(
+//                                'numberposts' => 5,
+//                                'category' => 0,
+//                                'orderby' => 'date',
+//                                'order' => 'DESC',
+//                                'include' => array(),
+//                                'exclude' => array(),
+//                                'meta_key' => '',
+//                                'meta_value' => '',
+//                                'post_type' => 'post',
+//                                'suppress_filters' => true,
+//                            );
+//                            $posts = get_posts($args);
+//                            $counter = 0;
+//                            foreach ($posts as $post) {
+//                                setup_postdata($post);
+
                                 $single_id = $post->ID;
                                 $blog_singles = get_fields($single_id);
                             //var_dump($post);
@@ -92,7 +79,7 @@ $post_id = get_the_ID();
 
                         <div class="item">
                             <div class="image">
-                                <a href="<?php the_permalink();?>"><img src="<?php the_post_thumbnail(); ?>" alt=""></a>
+                                <a href="<?php the_permalink();?>"><img src="<?php the_post_thumbnail_url(); ?>" alt=""></a>
                             </div>
                             <div class="text-block">
                                 <div class="wrap">
@@ -109,10 +96,11 @@ $post_id = get_the_ID();
                                 <a href="<?php the_permalink();?>" class="button"><span>לכתבה המלאה</span></a>
                             </div>
                         </div>
-                                <?php
-                            }
-                                    wp_reset_postdata();
-                                    ?>
+                        <?php endwhile; ?>
+<!--                                --><?php
+//                            }
+//                                    wp_reset_postdata();
+//                                    ?>
 
                     </div>
                 </div>
@@ -121,24 +109,26 @@ $post_id = get_the_ID();
 
             <div class="nav-section">
 
+                <?php if (function_exists("pagination")) {
+                    pagination($custom_query->max_num_pages);
+                } ?>
 
-
-                <!--<div class="main-holder">-->
-                <!--<ul>-->
-                <!--<li><a href="#" class="prev"></a></li>-->
-                <!--<li><a href="#" class="page current">1</a></li>-->
-                <!--<li><a href="#" class="page">2</a></li>-->
-                <!--<li><a href="#" class="page">3</a></li>-->
-                <!--<li><a href="#" class="page">4</a></li>-->
-                <!--<li><a href="#" class="page">5</a></li>-->
-                <!--<li><a href="#" class="page">6</a></li>-->
-                <!--<li><a href="#" class="page">7</a></li>-->
-                <!--<li><a href="#" class="page">8</a></li>-->
-                <!--<li><a href="#" class="page">9</a></li>-->
-                <!--<li><a href="#" class="page">10</a></li>-->
-                <!--<li><a href="#" class="next"></a></li>-->
-                <!--</ul>-->
-                <!--</div>-->
+<!--                <div class="main-holder">-->
+<!--                    <ul>-->
+<!--                    <li><a href="#" class="prev"></a></li>-->
+<!--                    <li><a href="#" class="page current">1</a></li>-->
+<!--                    <li><a href="#" class="page">2</a></li>-->
+<!--                    <li><a href="#" class="page">3</a></li>-->
+<!--                    <li><a href="#" class="page">4</a></li>-->
+<!--                    <li><a href="#" class="page">5</a></li>-->
+<!--                    <li><a href="#" class="page">6</a></li>-->
+<!--                    <li><a href="#" class="page">7</a></li>-->
+<!--                    <li><a href="#" class="page">8</a></li>-->
+<!--                    <li><a href="#" class="page">9</a></li>-->
+<!--                    <li><a href="#" class="page">10</a></li>-->
+<!--                    <li><a href="#" class="next"></a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
 
         </div>
