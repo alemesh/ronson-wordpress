@@ -1,6 +1,7 @@
 <?php
 require get_template_directory() . '/inc/setap_scripts.php';
 require get_template_directory() . '/inc/scripts.php';
+require get_template_directory() . '/inc/form_processing.php';
 
 
 function fourth_section_counter($counter){

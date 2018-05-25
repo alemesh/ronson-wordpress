@@ -19,6 +19,9 @@ function ronson_scripts_init(){
     wp_register_script('ronson_theme_scripts', get_template_directory_uri() . '/js/scripts.min.js', array(), false, true);
     wp_enqueue_script('ronson_theme_scripts');
 
+    wp_register_script('themajax_scripts', get_template_directory_uri() . '/js/themajax.js', array(), false, true);
+    wp_enqueue_script('themajax_scripts');
+
 
 }
 add_action('wp_enqueue_scripts', 'ronson_scripts_init');

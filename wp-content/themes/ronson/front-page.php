@@ -32,7 +32,8 @@ $investments = get_field('investments', $post_id);
 
             <div class="form-hold">
                 <h3><?php if($home_page['the_title_of_the_contact_form'] != null){ echo $home_page['the_title_of_the_contact_form']; }?></h3>
-                <form action="form_processing.php" class="form form-validation" method="post">
+<!--                --><?php //echo do_shortcode('[contact-form-7 id="205" title="Home contact form" html_class="form form-validation"]');?>
+                <form action="" class="form form-validation" method="post">
                     <div class="form-row-wrap">
                         <input type="hidden" value="7674" name="ProjectID">
                         <input type="hidden" value="zxc1204" name="Password">
