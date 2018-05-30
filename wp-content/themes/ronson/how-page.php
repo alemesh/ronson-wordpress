@@ -68,7 +68,7 @@ $items_of_the_second_section = get_field('items_of_the_second_section', $post_id
                                             <textarea name="description" class="form-control textarea" placeholder="תוכן הפנייה"></textarea>
                                         </div>
                                         <div class="form-row">
-                                            <input type="submit" class="btn" value="שלח">
+                                            <input type="submit" data-action="sendErmailFloatingForm" class="btn" value="שלח">
                                         </div>
                                     </div>
                                 </form>

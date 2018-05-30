@@ -40,7 +40,7 @@ $post_id = get_the_ID();
                                     <textarea name="description" class="form-control textarea" placeholder="תוכן הפנייה"></textarea>
                                 </div>
                                 <div class="form-row">
-                                    <input type="submit" class="btn" value="שלח">
+                                    <input type="submit" data-action="sendErmailFloatingForm" class="btn" value="שלח">
                                 </div>
                             </div>
                         </form>

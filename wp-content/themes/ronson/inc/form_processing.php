@@ -3,15 +3,11 @@
 
 function sendermail() {
 
-
-    //****************************************
-//edit here
-
+if (isset($_POST['search'])) {
+    parse_str($_POST['search']['formserialize'], $data);
 
 
-
-
-    $senderName = 'Ronson';
+    $senderName = 'Ronson site';
     $senderEmail = $_SERVER['SERVER_NAME'];
     $targetEmail = [];
 //$targetEmail = ['ravit@gofmans.co.il', 'office@ronson.co.il', 'idan@ronson.co.il', 'alemesh@acceptic.com', 'sales1@ronson.co.il', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
@@ -39,12 +35,11 @@ function sendermail() {
 
 
 // mail content
-    $ufname = $_POST['name'];
-    $uphone = $_POST['tel'];
-    $umail = $_POST['email'];
-
-    $ProjectID = $_POST['ProjectID'];
-    $Password = $_POST['Password'];
+    $ufname = $data['name'];
+    $uphone = $data['tel'];
+    $umail = $data['email'];
+    $ProjectID = $data['ProjectID'];
+    $Password = $data['Password'];
     $reffererName = $_SERVER['HTTP_REFERER'];
 
 
@@ -66,7 +61,7 @@ function sendermail() {
         mail($val, $messageSubject, $messageText, $messageHeaders);
     }
 
-    var_dump($_POST);
+//    var_dump($_POST);
 // BmbYY sistem ======
 
 //$url = 'http://www.bmby.com/shared/AddClient/index.php';
@@ -106,12 +101,14 @@ function sendermail() {
 //$urlredirect = 'http://www.ronson.co.il/thanks-page.html?Lead=true';
 //$urlredirect = 'http://192.168.89.147/thanks-page.html?Lead=true';
 //$urlredirect = 'http://campaign.gofmans.co.il/ronson/thanks-page.html?Lead=true';
+
 //// redirect
 //if($redirectToReferer) {
 //    header("Location: ".$urlredirect);
 //} else {
 //    header("Location: ".$redirectURL);
 //}
+}
 	wp_die();
 }
 

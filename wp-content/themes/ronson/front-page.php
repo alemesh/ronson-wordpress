@@ -47,7 +47,7 @@ $investments = get_field('investments', $post_id);
                             <input name="email" class="form-control" type="email" placeholder="דוא”ל">
                         </div>
                         <div class="form-row wrap-btn">
-                            <input type="submit" class="btn" value="שלח">
+                            <input type="submit" data-action="sendermail" class="btn" value="שלח">
                         </div>
                     </div>
                 </form>
@@ -72,6 +72,9 @@ $investments = get_field('investments', $post_id);
                             <span class="image-item">
 									<p class="bot-title"><?php echo $block['title-2'];?></p>
 									<p class="bot-description"><?php echo $block['description'];?></p>
+                                <?php if($block['description_red_color'] != null){ ?>
+                                    <p class="bot-description red-color"><?php echo $block['description_red_color'];?></p>
+                                <?php }?>
 								</span>
                         </li>
                             <?php endforeach; ?>
@@ -119,7 +122,7 @@ $investments = get_field('investments', $post_id);
                         <li id="item-<?php echo $counter; ?>">
                             <img src="<?php echo $block['image'];?>" alt="">
                             <p class="text"><?php echo $block['description'];?></p>
-                            <a href="<?php echo $block['the_link_of_the_button'];?>">
+                            <a href="<?php echo home_url('/');?><?php echo $block['the_link_of_the_button'];?>">
                                 <div class="wrap-span">
                                     <span class="button"><?php echo $block['the_text_of_the_button'];?></span>
                                 </div>

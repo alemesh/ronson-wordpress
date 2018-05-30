@@ -24,7 +24,7 @@ $footer_options = get_fields(184);
             <?php if( is_front_page() ) {?>
             <span class="button-mobile"><a href="#video-section"><span class="youtube"></span></a></span>
             <?php }else{?>
-                <a href="/#video-section"><span class="youtube"></span></a>
+                <a href="<?php echo home_url('/');?>#video-section"><span class="youtube"></span></a>
             <?php }?>
         </div>
         <div class="nav">
@@ -59,7 +59,7 @@ $footer_options = get_fields(184);
     <!--<span class="label">Gofman creative</span>-->
     <div class="main-holder">
         <div class="logo-footer">
-            <a href="/">
+            <a href="<?php echo home_url('/');?>">
                 <?php if($footer_options['logo'] != null){ ?>
                 <img src="<?php echo $footer_options['logo'];?>" alt="">
                 <?php }?>

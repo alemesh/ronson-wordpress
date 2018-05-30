@@ -160,7 +160,7 @@ $header_options = get_fields(171);
                         <textarea name="description" class="form-control textarea" placeholder="תוכן הפנייה"></textarea>
                     </div>
                     <div class="form-row">
-                        <input type="submit" class="btn" value="שלח">
+                        <input type="submit" data-action="sendErmailFloatingForm" class="btn" value="שלח">
                     </div>
                 </div>
             </form>
@@ -170,7 +170,7 @@ $header_options = get_fields(171);
     <div class="header">
         <div class="header-conteiner">
             <div class="logo">
-                <a href="/">
+                <a href="<?php echo home_url('/');?>">
                     <?php if($header_options['logo'] != null){ ?>
                     <img src="<?php echo $header_options['logo'];?>" alt="logo">
                     <?php }?>
@@ -196,13 +196,13 @@ $header_options = get_fields(171);
                     <?php if( is_front_page() ) {?>
                     <li class="button-mobile"><a href="#video-section"><span class="youtube"></span></a></li>
                     <?php }else{?>
-                    <li><a href="/#video-section"><span class="youtube"></span></a></li>
+                    <li><a href="<?php echo home_url('/');?>#video-section"><span class="youtube"></span></a></li>
                     <?php }?>
                 </ul>
             </div>
             <div class="nav-section" id="form-scrol">
-                <a href="/">
-                    <div class="floating-logo" style="background-image: url(img/logo2.png)"></div>
+                <a href="<?php echo home_url('/');?>">
+                    <div class="floating-logo" style="background-image: url(<?php bloginfo('template_url')?>/img/logo2.png)"></div>
                 </a>
 
                 <?php
