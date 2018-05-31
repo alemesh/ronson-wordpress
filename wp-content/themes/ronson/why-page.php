@@ -17,6 +17,7 @@ $post_id = get_the_ID();
             <div class="layer-bg3" style="background-image: url(<?php echo $why_page['background_3']; ?>)"></div>
             <?php }?>
             <div class="layer-bg2"></div>
+            <div class="layer-bg4-4-4" style="background-image: url(<?php bloginfo('template_url')?>/img/blog/bg-layer4-4-4.png)"></div>
 
             <div class="main-holder">
 

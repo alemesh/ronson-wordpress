@@ -11,7 +11,7 @@ if (isset($_POST['search'])) {
     $senderEmail = $_SERVER['SERVER_NAME'];
     $targetEmail = [];
 //$targetEmail = ['ravit@gofmans.co.il', 'office@ronson.co.il', 'idan@ronson.co.il', 'alemesh@acceptic.com', 'sales1@ronson.co.il', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
-    $targetEmail = ['alemesh@acceptic.com'];
+    $targetEmail = ['alemesh@acceptic.com', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
 //$targetEmail = ['alemesh@acceptic.com', 'eli@gofmans.co.il'];
     $messageSubject = 'Message from web-site - '. $_SERVER['SERVER_NAME'];
     $redirectToReferer = true;
