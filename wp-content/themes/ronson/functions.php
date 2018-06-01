@@ -3,6 +3,7 @@ require get_template_directory() . '/inc/setap_scripts.php';
 require get_template_directory() . '/inc/scripts.php';
 require get_template_directory() . '/inc/form_processing.php';
 require get_template_directory() . '/inc/floating_form_sender.php';
+require get_template_directory() . '/inc/theme_customize_menu.php';
 
 
 function fourth_section_counter($counter){
@@ -63,3 +64,7 @@ function pagination($pages = '', $range = 4)
         echo "</ul></div>\n";
     }
 }
+
+
+
+

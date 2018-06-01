@@ -40,8 +40,8 @@ $(document).on('submit', '.form', function (e) {
         },
         success: function (response) {
             console.log(response);
-            window.location.href = 'http://ronson-wordpress.local/thanks-page/';
-            // window.location.href = 'http://campaign.gofmans.co.il/ronson-site/thanks-page/';
+            // window.location.href = 'http://ronson-wordpress.local/thanks-page/';
+            window.location.href = 'http://campaign.gofmans.co.il/ronson-site/thanks-page/';
         },
         error: function ($e) {
             console.log($e);

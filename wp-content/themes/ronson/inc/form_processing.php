@@ -6,12 +6,24 @@ function sendermail() {
 if (isset($_POST['search'])) {
     parse_str($_POST['search']['formserialize'], $data);
 
+//get emails list from admin panel
+    if(get_theme_mod('contact_emails') !='' ){
+        $targetEmail = get_theme_mod('contact_emails');
+        $targetEmailExplode = explode(',', $targetEmail);
+        $nevTargetEmail = [];
+        foreach ($targetEmailExplode as $value){
+            $nevTargetEmail[] = trim($value);
+        }
+
+    }
+
 
     $senderName = 'Ronson site';
     $senderEmail = $_SERVER['SERVER_NAME'];
     $targetEmail = [];
 //$targetEmail = ['ravit@gofmans.co.il', 'office@ronson.co.il', 'idan@ronson.co.il', 'alemesh@acceptic.com', 'sales1@ronson.co.il', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
-    $targetEmail = ['alemesh@acceptic.com', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
+//    $targetEmail = ['alemesh@acceptic.com', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
+    $targetEmail = $nevTargetEmail;
 //$targetEmail = ['alemesh@acceptic.com', 'eli@gofmans.co.il'];
     $messageSubject = 'Message from web-site - '. $_SERVER['SERVER_NAME'];
     $redirectToReferer = true;
