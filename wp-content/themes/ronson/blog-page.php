@@ -88,6 +88,9 @@ $post_id = get_the_ID();
                                         <!--<p>מרץ 12, 2018<span> // </span>BIZportal  </p>-->
                                         <!--<p>מרץ 12, 2018<span> // </span>BIZportal  <span> // </span>נועם בראל  </p>-->
                                         <p><?php if($blog_singles['author'] != null){ echo $blog_singles['author']; ?><span> // </span><?php }?><?php if($blog_singles['redaction'] != null){ echo $blog_singles['redaction']; ?>  <span> // </span><?php }?> <?php echo $date->format('Y ,j F');?></p>
+<!--                                        <p>--><?php //if($blog_singles['author'] != null){ echo $blog_singles['author']; ?><!--<span> // </span>--><?php //}?><!----><?php //if($blog_singles['redaction'] != null){ echo $blog_singles['redaction']; ?><!--  <span> // </span>--><?php //}?><!-- --><?php //monthTranslate($date->format('Y ,j F'));?><!--</p>-->
+<!--                                        <p>נועם בראל<span> // </span>BIZportal  <span> // </span>מרץ 12, 2018  </p>-->
+<!--                                        <p>נועם בראל<span> // </span>BIZportal  <span> // </span>--><?php //monthTranslate($date->format('Y ,j F'));?><!--</p>-->
                                     </div>
                                     <div class="description">
                                         <?php the_excerpt(); ?>

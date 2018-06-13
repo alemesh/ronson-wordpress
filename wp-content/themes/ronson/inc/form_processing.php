@@ -103,7 +103,7 @@ if (isset($_POST['search'])) {
     $today = date("F j, Y, g:i a");
 
     $file = 'sample.csv';
-    $tofile = "$ufname;$uphone;$umail;$today\n";
+    $tofile = "$ufname;$uphone;$umail;$MediaTitle;$today\n";
     $bom = "\xEF\xBB\xBF";
     @file_put_contents($file, $bom . $tofile . file_get_contents($file));
 

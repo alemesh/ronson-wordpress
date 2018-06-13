@@ -68,3 +68,39 @@ function pagination($pages = '', $range = 4)
 
 
 
+function monthTranslate($date){
+
+    $myExplode = explode(' ', $date);
+//    var_dump($myExplode[2]);
+    if ($myExplode[2] == 'January'){
+        $myExplode[2] = 'יָנוּאַר';
+    }elseif ($myExplode[2] == 'February'){
+        $myExplode[2] = 'פֶבּרוּאַר';
+    }elseif ($myExplode[2] == 'March'){
+        $myExplode[2] = 'מֶרץ';
+    }elseif ($myExplode[2] == 'April'){
+        $myExplode[2] = 'אַפּרִיל';
+    }elseif ($myExplode[2] == 'May'){
+        $myExplode[2] = 'מַאי';
+    }elseif ($myExplode[2] == 'June'){
+        $myExplode[2] = 'יוּנִי';
+    }elseif ($myExplode[2] == 'July'){
+        $myExplode[2] = 'יוּלִי';
+    }elseif ($myExplode[2] == 'August'){
+        $myExplode[2] = 'אוֹגוּסט';
+    }elseif ($myExplode[2] == 'September'){
+        $myExplode[2] = 'סֶפּטֶמבֶּר';
+    }elseif ($myExplode[2] == 'October'){
+        $myExplode[2] = 'אוֹקטוֹבֶּר';
+    }elseif ($myExplode[2] == 'November'){
+        $myExplode[2] = 'נוֹבֶמבֶּר';
+    }elseif ($myExplode[2] == 'December'){
+        $myExplode[2] = 'דֶצֶמבֶּר';
+    }else{
+        $myExplode[2];
+    }
+//    var_dump($myExplode[2]);
+
+
+    echo $myExplode[0].' '.$myExplode[1].' '.$myExplode[2];
+}
