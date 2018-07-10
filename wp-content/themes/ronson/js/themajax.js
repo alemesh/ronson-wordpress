@@ -29,8 +29,8 @@ $(document).on('submit', '.form', function (e) {
     var action = $(this).find("input[type='submit']").data('action');
 
     $.ajax({
-        // url: '/wp-admin/admin-ajax.php',
-        url: '/ronson-site/wp-admin/admin-ajax.php',
+        url: '/wp-admin/admin-ajax.php',
+        // url: '/ronson-site/wp-admin/admin-ajax.php',
         method: 'post',
         data: {
             action: action,
@@ -40,8 +40,9 @@ $(document).on('submit', '.form', function (e) {
         },
         success: function (response) {
             console.log(response);
-            // window.location.href = 'http://ronson-wordpress.local/thanks-page/';
-            window.location.href = 'http://campaign.gofmans.co.il/ronson-site/thanks-page/';
+            // window.location.href = 'http://ronson-wordpress.local/thanks-page.html/';
+            // window.location.href = 'http://campaign.gofmans.co.il/ronson-site/thanks-page/';
+            window.location.href = 'http://www.ronson.co.il/thanks-page/';
         },
         error: function ($e) {
             console.log($e);

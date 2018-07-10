@@ -21,7 +21,7 @@ if (isset($_POST['search'])) {
     $senderName = 'Ronson site';
     $senderEmail = $_SERVER['SERVER_NAME'];
     $targetEmail = [];
-//$targetEmail = ['ravit@gofmans.co.il', 'office@ronson.co.il', 'idan@ronson.co.il', 'alemesh@acceptic.com', 'sales1@ronson.co.il', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
+//$targetEmail = ['ravit@gofmans.co.il', 'office@ronson.co.il', 'idan@ronson.co.il', 'sales1@ronson.co.il', 'alemesh@acceptic.com' 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
 //    $targetEmail = ['alemesh@acceptic.com', 'israel@gofmans.co.il', 'eli@gofmans.co.il'];
     $targetEmail = $nevTargetEmail;
 //$targetEmail = ['alemesh@acceptic.com', 'eli@gofmans.co.il'];
@@ -76,25 +76,25 @@ if (isset($_POST['search'])) {
 //    var_dump($_POST);
 // BmbYY sistem ======
 
-//$url = 'http://www.bmby.com/shared/AddClient/index.php';
-////$url = 'http://192.168.89.147/test.php';
-////$url = 'http://testbmby/test.php';
-//$params = array(
-//    'Fname' => $ufname,
-//    'Phone' => $uphone,
-//    'Email' => $umail,
-//    'ProjectID' => $ProjectID,
-//    'Password' => $Password,
-//    'Referal' => $reffererName,
-//    'MediaTitle' => $MediaTitle
-//);
-//$result = file_get_contents($url, false, stream_context_create(array(
-//    'http' => array(
-//        'method'  => 'POST',
-//        'header'  => 'Content-type: application/x-www-form-urlencoded',
-//        'content' => http_build_query($params)
-//    )
-//)));
+$url = 'http://www.bmby.com/shared/AddClient/index.php';
+//$url = 'http://192.168.89.147/test.php';
+//$url = 'http://testbmby/test.php';
+$params = array(
+    'Fname' => $ufname,
+    'Phone' => $uphone,
+    'Email' => $umail,
+    'ProjectID' => $ProjectID,
+    'Password' => $Password,
+    'Referal' => $reffererName,
+    'MediaTitle' => $MediaTitle
+);
+$result = file_get_contents($url, false, stream_context_create(array(
+    'http' => array(
+        'method'  => 'POST',
+        'header'  => 'Content-type: application/x-www-form-urlencoded',
+        'content' => http_build_query($params)
+    )
+)));
 
 
 
@@ -103,7 +103,7 @@ if (isset($_POST['search'])) {
     $today = date("F j, Y, g:i a");
 
     $file = 'sample.csv';
-    $tofile = "$ufname;$uphone;$umail;$MediaTitle;$today\n";
+    $tofile = "$ufname;$uphone;$umail;$MediaTitle;$reffererName;$today\n";
     $bom = "\xEF\xBB\xBF";
     @file_put_contents($file, $bom . $tofile . file_get_contents($file));
 
