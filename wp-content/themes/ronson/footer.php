@@ -8,7 +8,7 @@ $footer_options = get_fields(184);
             <a href="https://api.whatsapp.com/send?phone=<?php echo $footer_options['whatsapp_number'];?>" class="mobile-hidden"><span class="phone-text"><?php if($footer_options['whatsapp_text_1'] != null){ echo $footer_options['whatsapp_text_1']; }?></span><span class="phon-number"><?php if($footer_options['whatsapp_text_2'] != null){ echo $footer_options['whatsapp_text_2']; }?></span><span class="mobile-phone"></span></a>
             <?php }?>
             <?php if($footer_options['floating_form_text_1'] != null){ ?>
-            <a href="#" id="myBtn2" ><span><?php echo $footer_options['floating_form_text_1'];?><span class="column"><?php if($footer_options['floating_form_text_2'] != null){ echo $footer_options['floating_form_text_2']; }?></span></span><span class="mail"></span></a>
+            <a href="#" id="myBtn2" ><span><?php echo $footer_options['floating_form_text_1'];?> <span class="column"><?php if($footer_options['floating_form_text_2'] != null){ echo $footer_options['floating_form_text_2']; }?></span></span><span class="mail"></span></a>
             <?php }?>
             <?php if($footer_options['phone_number'] != null){ ?>
             <a href="tel:<?php echo $footer_options['phone_number'];?>"><span class="phone-text"><?php if($footer_options['phone_text'] != null){ echo $footer_options['phone_text']; }?></span><span class="phon-number"><?php echo $footer_options['phone_number'];?></span><span class="phone"></span></a>
