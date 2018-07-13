@@ -1,31 +1,25 @@
 <?php
 /**Template name: about_page */
 get_header();
-//$why_page = get_fields();
-//$post_id = get_the_ID();
+$why_page = get_fields();
+$post_id = get_the_ID();
+$second_section = get_field('second_section', $post_id);
+$video_section_left_block = get_field('video_section_left_block', $post_id);
 ?>
 
 
         <div class="main">
             <div class="why-page about" style="background-image: url(<?php bloginfo('template_url')?>/img/blog/why-bg2.png)">
-                <!--<div class="corner-bg"></div>-->
-                <!--<div class="layer-bg" style="background-image: url(img/bg-layer2.png)"></div>-->
-                <!--<div class="layer-bg3" style="background-image: url(img/blog/bg-layer4-4.png)"></div>-->
                 <div class="layer-bg2"></div>
                 <div class="layer-red" style="background-image: url(<?php bloginfo('template_url')?>/img/about/bg-lier2.png)"></div>
-                <!--<div class="layer-bg4-4-4" style="background-image: url(img/blog/bg-layer4-4-4.png)"></div>-->
-
                 <div class="main-holder">
-
                     <div class="text-section">
-                        <h1>אודות "רונסון"</h1>
-
-
+                        <h1><?php the_title();?></h1>
                         <div class="content">
-                            <p>"רונסון" היא אחת מחברות יזמות הנדל"ן הגדולות והמובילות בפולין. לחברה ניסיון של 20 שנה בשוק הנדל"ן הפולני, יסודות חזקים, מאזנים מעולים ודוחות רווח והפסד מצויינים. בעשר השנים האחרונות "רונסון" נסחרת בבורסה הפולנית.</p>
-                            <p>בעלת השליטה ב"רונסון" הינה קבוצת עמוס לוזון יזמות ואנרגיה בע"מ, שבבעלותה עשרות פרויקטים בארץ ובעולם, והיא נחשבת לאחת הקבוצות המובילות בשוק הנדל"ן הישראלי.</p>
-                            <p>ל"רונסון" <b>עשרות פרויקטים שהקמתם הושלמה ועוד כעשרה פרויקטים הנמצאים כרגע בתהליכי שיווק ובנייה</b>, והיא החברה היחידה בפולין שמיוצגת על ידי סניף שיווק ומכירות בישראל.</p><b></b>
-                            <p>"רונסון" זכתה בפרסים רבים וציונים לשבח, ודורגה ע"י איגוד ה-SEG והאיגוד הפולני של החברות הנסחרות כמובילה בנושאים של:</p>
+                            <?php if( have_posts() ){ while( have_posts() ){ the_post(); ?>
+                            <?php the_content();?>
+                            <?php }
+                            }?>
                         </div>
                     </div>
 
@@ -34,109 +28,51 @@ get_header();
                 <div class="icons-block">
                     <div class="main-holder">
                         <ul>
-                            <li>
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/about/Rectangle8.png" alt="">
-                                </div>
-                                <div class="wrap-text">
-                                    <p>תקשורת עם משקיעים</p>
-                                </div>
+                            <?php if (isset($second_section) && !empty($second_section)): ?>
+                                <?php foreach ($second_section as $block): ?>
 
-                            </li>
-                            <li>
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/about/Rectangle8.png" alt="">
-                                </div>
-                                <div class="wrap-text">
-                                    <p>דעת קהל בקרב משקיעים פרטיים</p>
-                                </div>
+                                    <li>
+                                        <div class="wrap-img">
+                                            <img src="<?php echo $block['image'];?>" alt="">
+                                        </div>
+                                        <div class="wrap-text">
+                                            <p><?php echo $block['title'];?></p>
+                                        </div>
 
-                            </li>
-                            <li>
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/about/Rectangle8.png" alt="">
-                                </div>
-                                <div class="wrap-text">
-                                    <p>חדשנות ואינטואיטיביות </p>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="wrap-img">
-                                    <img src="<?php bloginfo('template_url')?>/img/about/Rectangle8.png" alt="">
-                                </div>
-                                <div class="wrap-text">
-                                    <p>בהירות המסר ותוכן המידע </p>
-                                </div>
-
-                            </li>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
                 <div class="video-block">
                     <div class="main-holder">
-                        <h3>רונסון מתחדשת כל הזמן:</h3>
+                        <?php if($why_page['video_section_title'] != null){ ?>
+                            <h3><?php echo $why_page['video_section_title'];?></h3>
+                        <?php }?>
                         <div class="wrap-block">
                             <div class="icons-left-block">
                                 <ul class="responsive-about">
+                                    <?php if (isset($video_section_left_block) && !empty($video_section_left_block)): ?>
+                                        <?php foreach ($video_section_left_block as $block): ?>
                                     <li>
                                         <div class="wrap-img">
-                                            <img src="<?php bloginfo('template_url')?>/img/about/Vector-1.png" alt="">
+                                            <img src="<?php echo $block['image'];?>" alt="">
                                         </div>
                                         <div class="wrap-text">
-                                            <p>הפרויקטים החדשים של רונסון משלבים איכות בלתי מתפשרת ברמת הגימור</p>
+                                            <p><?php echo $block['title'];?></p>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="wrap-img">
-                                            <img src="<?php bloginfo('template_url')?>/img/about/Vector-2.png" alt="">
-                                        </div>
-                                        <div class="wrap-text">
-                                            <p>הנכסים מוקמים תוך הקפדה על עיצוב מודרני ופונקציונלי</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wrap-img">
-                                            <img src="<?php bloginfo('template_url')?>/img/about/Vector-3.png" alt="">
-                                        </div>
-                                        <div class="wrap-text">
-                                            <p>הנכסים אטרקטיביים - ממוקמים בערים מרכזיות </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wrap-img">
-                                            <img src="<?php bloginfo('template_url')?>/img/about/Vector-4.png" alt="">
-                                        </div>
-                                        <div class="wrap-text">
-                                            <p>תשתית עירונית מקיפה לרבות: קניונים, פארקים, מכוני כושר ומרכזי ספורט </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wrap-img">
-                                            <img src="<?php bloginfo('template_url')?>/img/about/Vector-5.png" alt="">
-                                        </div>
-                                        <div class="wrap-text">
-                                            <p>תחבורה מתקדמת ונגישות עירונית</p>
-                                        </div>
-                                    </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                             <div class="video" id="video-section">
-                                <!--<video src="img/Ronson_FINAL.mp4"></video>-->
-                                <video class="video-controll mobile-hidden-video" id="videoPlayer" controls poster="<?php bloginfo('template_url')?>/img/video-play.png" onclick="this.paused ? this.play() : this.pause();">
-                                    <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
-                                    <source  src="<?php bloginfo('template_url')?>/video/Ronson_FINAL.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                    <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
-                                    <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
-                                    <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
+                                <video class="video-controll mobile-hidden-video" id="videoPlayer" controls playsinline autoplay poster="<?php if($why_page['video_poster'] != null){ echo $why_page['video_poster']; }?>">
+                                    <source  src="<?php if($why_page['video_desctop'] != null){ echo $why_page['video_desctop']; }?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+
                                 </video>
-                                <video class="video-controll desctop-hidden-video" id="videoPlayer" controls poster="<?php bloginfo('template_url')?>/img/video-play.png" onclick="this.paused ? this.play() : this.pause();">
-                                    <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
-                                    <source src="<?php bloginfo('template_url')?>/video/ronson.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                    <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
-                                    <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
-                                    <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
-                                </video>
+
                             </div>
                         </div>
                     </div>
@@ -145,14 +81,15 @@ get_header();
                     <div class="main-holder">
                         <div class="wrap-section">
                             <div class="left-block">
-                                <p>ליווי אישי וצמוד לאורך התהליך </p>
-                                <p>חבילת שירות כוללת של טיפול מקיף והתנהלות מול הרשויות, לרבות איתור חברה לניהול הנכס וביצוע עבודות גמר</p>
-                                <p>ידע מקיף בזירת הנדל"ן הפולנית</p>
+                                <?php if($why_page['fourth_section_left_block'] != null){ ?>
+                                    <?php echo $why_page['fourth_section_left_block'];?>
+                                <?php }?>
                             </div>
                             <div class="right-block">
                                 <div class="wrap-text">
-                                    <p>מלבד קניית הנכס,</p>
-                                    <p>לרונסון ישראל <b>יתרונות נוספים:</b></p>
+                                    <?php if($why_page['fourtch_section_right_block'] != null){ ?>
+                                        <?php echo $why_page['fourtch_section_right_block'];?>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>

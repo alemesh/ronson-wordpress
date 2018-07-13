@@ -84,24 +84,12 @@ $investments = get_field('investments', $post_id);
                 </div>
                 <div class="video" id="video-section">
                     <?php if($home_page['video_desktop'] != null){ ?>
-                    <!--<video src="img/Ronson_FINAL.mp4"></video>-->
-                    <video class="video-controll mobile-hidden-video" id="videoPlayer" controls <?php if($home_page['poster_for_video_section'] != null){ ?>poster="<?php echo $home_page['poster_for_video_section'];?>"<?php }?> onclick="this.paused ? this.play() : this.pause();">
-                        <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
+                    <video class="video-controll mobile-hidden-video" id="videoPlayer" controls autoplay playsinline <?php if($home_page['poster_for_video_section'] != null){ ?>poster="<?php echo $home_page['poster_for_video_section'];?>"<?php }?>>
                         <source  src="<?php echo $home_page['video_desktop'];?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                        <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
-                        <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
-                        <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
+
                     </video>
                     <?php }?>
-                    <?php if($home_page['video_mobile'] != null){ ?>
-                    <video class="video-controll desctop-hidden-video" id="videoPlayer" controls <?php if($home_page['poster_for_video_section'] != null){ ?>poster="<?php echo $home_page['poster_for_video_section'];?>"<?php }?> onclick="this.paused ? this.play() : this.pause();">
-                        <!--<source src="video/duel.ogv" type='video/ogg; codecs="theora, vorbis"'>-->
-                        <source src="<?php echo $home_page['video_mobile'];?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                        <!--<source src="video/Ronson_FINAL.mp4" type='video/mp4'>-->
-                        <!--<source src="video/duel.webm" type='video/webm; codecs="vp8, vorbis"'>-->
-                        <!--<a href="img/Ronson_FINAL.mp4">Скачайте видео</a>-->
-                    </video>
-                    <?php }?>
+
 
                 </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+
 function sendErmailFloatingForm() {
 
 if (isset($_POST['search'])) {
@@ -81,25 +82,25 @@ parse_str($_POST['search']['formserialize'], $data);
 
 // BmbYY sistem ======
 
-//    $url = 'http://www.bmby.com/shared/AddClient/index.php';
-////$url = 'http://192.168.89.147/test.php';
-////$url = 'http://testbmby/test.php';
-//    $params = array(
-//        'Fname' => $ufname,
-//        'Phone' => $uphone,
-//        'Email' => $umail,
-//        'ProjectID' => $ProjectID,
-//        'Password' => $Password,
-//        'Referal' => $reffererName,
-//        'MediaTitle' => $MediaTitle
-//    );
-//    $result = file_get_contents($url, false, stream_context_create(array(
-//        'http' => array(
-//            'method'  => 'POST',
-//            'header'  => 'Content-type: application/x-www-form-urlencoded',
-//            'content' => http_build_query($params)
-//        )
-//    )));
+    $url = 'http://www.bmby.com/shared/AddClient/index.php';
+//$url = 'http://192.168.89.147/test.php';
+//$url = 'http://testbmby/test.php';
+    $params = array(
+        'Fname' => $ufname,
+        'Phone' => $uphone,
+        'Email' => $umail,
+        'ProjectID' => $ProjectID,
+        'Password' => $Password,
+        'Referal' => $reffererName,
+        'MediaTitle' => $MediaTitle
+    );
+    $result = file_get_contents($url, false, stream_context_create(array(
+        'http' => array(
+            'method'  => 'POST',
+            'header'  => 'Content-type: application/x-www-form-urlencoded',
+            'content' => http_build_query($params)
+        )
+    )));
 
 
 
